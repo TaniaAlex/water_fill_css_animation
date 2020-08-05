@@ -1,0 +1,66 @@
+:root {
+  --background: #051138;
+  --dark: linear-gradient(315deg, #7f2caf, #b9238a);
+}
+* {
+  /* reset default behavior on all browsers */
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  min-height: 100vh;
+  /* to center div with an image use display: flex on parent node element*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+}
+.box {
+  /* for absolute positioning on sudo elements */
+  position: relative;
+  background: var(--dark);
+  border: 0.5rem solid var(--dark);
+  height: 12rem;
+  width: 12rem;
+  outline: 0;
+  /* to see fill square outside box set overflow to none */
+  overflow: none;
+}
+
+.box::before {
+  /* content: "FILL";
+  font-size: 3rem;
+  color: var(--background);
+  font-family: "Times New Roman", Times, serif; */
+  content: url(/images/logo_white.png);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box::after {
+  content: "";
+  position: absolute;
+  /* to center square */
+  bottom: -50%;
+  left: -50%;
+  /* to smooth edges to look like liquid  */
+  border-radius: 37%;
+  background: var(--background);
+  height: 200%;
+  width: 200%;
+  /* to freeze on last frame set animation to forwards  instead infinite*/
+  animation: water 6s ease-in-out infinite;
+}
+
+@keyframes water {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-100%) rotate(400deg);
+  }
+}
